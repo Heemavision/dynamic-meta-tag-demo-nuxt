@@ -118,5 +118,34 @@
 <script>
 export default {
   name: 'NuxtTutorial',
+  props: {
+    metaTagDetails: {
+      type: Object,
+      required: false,
+      default: () => {},
+    },
+  },
+  head() {
+    return {
+      title: this.metaTagDetails.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.metaTagDetails.description,
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.metaTagDetails.title,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.metaTagDetails.description,
+        },
+      ],
+    }
+  },
 }
 </script>
